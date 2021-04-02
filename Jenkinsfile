@@ -29,7 +29,21 @@ pipeline {
     }
     post {
         always {
-            influxDbPublisher(selectedTarget: 'jenkins-metrics')
+            def influxdb = Jenkins.instance.getDescriptorByType(jenkinsci.plugins.influxdb.InfluxDbStep.DescriptorImpl)
+            def target = new jenkinsci.plugins.influxdb.models.Target()
+
+            target.description = 'my-new-target'
+            target.url = 'http://localhost:8086'
+
+            target.username = 'admin'
+            target.password = hudson.util.Secret.fromString('admin')
+
+            target.database = 'jenkins'
+
+            influxdb.addTarget(target)
+            influxdb.save()
+
+            influxDbPublisher(selectedTarget: 'my-new-target')
         }
     }
 }
