@@ -14,7 +14,7 @@ pipeline {
     }
     post {
       always {
-        influxDbPublisher(selectedTarget: 'jenkins-metrics')
+        influxDbPublisher(selectedTarget: 'jenkins')
       }
     }
 }
