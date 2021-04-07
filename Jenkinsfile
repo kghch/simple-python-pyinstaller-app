@@ -53,7 +53,7 @@ void printFinishedStageDurations() {
             def endTime    = TimingAction.getStartTime( stage.node.endNode )
             def duration   = endTime - startTime
 
-            myFields[stage.displayName] = duration
+            myFields["$stage.displayName"] = duration
         
             echo "Stage $stage.displayName duration: $duration ms" 
         }
