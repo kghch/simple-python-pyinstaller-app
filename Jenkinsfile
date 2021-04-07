@@ -45,7 +45,7 @@ void printFinishedStageDurations() {
     // To find branches instead, replace NodeType.STAGE by NodeType.PARALLEL
     def stages = visitor.pipelineNodes.findAll{ it.type == FlowNodeWrapper.NodeType.STAGE }
     
-    def myFields = [:]
+    def myFields = [a:1]
 
     for( stage in stages ) {
         if( stage.node.endNode ) {   // only finished stages have endNode
@@ -53,7 +53,6 @@ void printFinishedStageDurations() {
             def endTime    = TimingAction.getStartTime( stage.node.endNode )
             def duration   = endTime - startTime
 
-            myFields["aa"] = 1
         
             echo "Stage $stage.displayName duration: $duration ms" 
         }
