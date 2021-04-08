@@ -12,6 +12,9 @@ pipeline {
                     steps {
                         sleep 1
                     }
+                    always {
+                        influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'test_table', customData: ['stage_a1': 111])
+                    }
                 }
                 stage('A2') {
                     steps {
@@ -35,7 +38,6 @@ void printFinishedStageDurations() {
     // To find branches instead, replace NodeType.STAGE by NodeType.PARALLEL
     def stages = visitor.pipelineNodes.findAll{ it.type == FlowNodeWrapper.NodeType.STAGE }
     
-    def myFields = [:]
 
     for( stage in stages ) {
         if( stage.node.endNode ) {   // only finished stages have endNode
@@ -49,5 +51,4 @@ void printFinishedStageDurations() {
         }
     } 
 
-    influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'total_table', customData: myFields)
 }
