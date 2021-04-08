@@ -12,9 +12,11 @@ pipeline {
                     steps {
                         sleep 1
                     }
-                    always {
+                    post {
+                      always {
                         influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'test_table', customData: ['stage_a1': 111])
-                    }
+                      }
+                    } 
                 }
                 stage('A2') {
                     steps {
