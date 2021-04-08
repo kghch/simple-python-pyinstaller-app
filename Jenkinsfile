@@ -48,7 +48,6 @@ void printFinishedStageDurations() {
             def duration   = endTime - startTime
 
         
-            myFields[stage.displayName] = duration
             echo "Stage $stage.displayName duration: $duration ms" 
         }
     } 
