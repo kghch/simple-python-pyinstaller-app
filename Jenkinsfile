@@ -23,7 +23,7 @@ pipeline {
     }
     post {
         always {
-            steps {
+            script {
 
                 def visitor = new PipelineNodeGraphVisitor( currentBuild.rawBuild )
 
