@@ -43,7 +43,7 @@ pipeline {
                     }
                 } 
 
-                influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'total_table', customData: myFields)
+                influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'total_table')
             }
         }
     }
