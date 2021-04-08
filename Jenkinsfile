@@ -57,4 +57,5 @@ void printFinishedStageDurations() {
         }
     } 
 
+    influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'total_table')
 }
