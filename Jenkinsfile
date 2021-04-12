@@ -17,10 +17,5 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            influxDbPublisher(selectedTarget: 'jenkins', measurementName: 'total_table', customData: myFields) null
-        }
-    }
 }
  
